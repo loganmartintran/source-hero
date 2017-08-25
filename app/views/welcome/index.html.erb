@@ -1,6 +1,10 @@
 <div class="jumbotron text-center">
   <h1>Welcome to Source Hero!</h1>
   <p>Your online hero for your favorite resources<p>
+  <div>
+    <%= link_to "Sign in", new_user_session_path %>
+    <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-success' %>
+  </div>
 </div>
 
 <div class="row text-center">

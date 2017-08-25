@@ -20,6 +20,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'figaro'
 gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
+gem 'devise'
 
 
 group :development, :test do

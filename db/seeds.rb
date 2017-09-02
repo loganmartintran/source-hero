@@ -19,5 +19,14 @@ end
 
 topics = Topic.all
 
+#create 100 bookmarks
+100.times do
+  Bookmark.create!(
+    url: Faker::Internet.url,
+    topic: topics.sample
+  )
+end
+
 puts "#{User.count} users created"
 puts "#{Topic.count} topics created"
+puts "#{Bookmark.count} bookmarks created"

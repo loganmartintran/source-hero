@@ -1,2 +1,10 @@
-<h1>Topics#edit</h1>
-<p>Find me in app/views/topics/edit.html.erb</p>
+<div class="text-center">
+  <h1>Edit Topic</h1>
+    <div class="form">
+      <%= form_for @topic do |f| %>
+      <%= f.label :title %>
+      <%= f.text_field :title, placeholder: "Title" %>
+      <%= f.submit "Save", class: 'btn btn-success' %>
+      <% end %>
+    </div>
+</div>

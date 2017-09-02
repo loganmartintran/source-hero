@@ -13,5 +13,13 @@ RSpec.describe Bookmark, type: :model do
     it "should belong to a topic" do
       expect(bookmark).to belong_to(:topic)
     end
+
+    it "responds to url attribute" do
+      expect(bookmark).to respond_to(:url)
+    end
+
+    it "responds to topic attribute" do
+      expect(bookmark).to respond_to(:topic)
+    end
   end
 end

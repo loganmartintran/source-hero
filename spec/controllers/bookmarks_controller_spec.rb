@@ -100,11 +100,8 @@ RSpec.describe BookmarksController, type: :controller do
 
   describe "DELETE #destroy" do
     it "deletes the bookmark" do
-      count = Bookmark.where({id: bookmark.id}).size
-
-      delete :destroy, topic_id: topic.id, id: bookmark.id
-
-      expect(count).to eq 0
+      bookmark
+      expect {delete :destroy, topic_id: topic.id, id: bookmark.id}.to change{Bookmark.all.count}.by(-1)
     end
 
     it "redirects to the topic view" do

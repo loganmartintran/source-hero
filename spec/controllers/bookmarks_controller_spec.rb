@@ -86,7 +86,7 @@ RSpec.describe BookmarksController, type: :controller do
       expect(updated_bookmark.url).to eq new_url
     end
 
-    it "redirects to the updated bookmark" do
+    it "redirects to the topic index" do
       new_name = 'new name'
       new_url = 'newurl@url.com'
 
@@ -94,7 +94,7 @@ RSpec.describe BookmarksController, type: :controller do
 
       updated_bookmark = assigns(:bookmark)
 
-      expect(response).to redirect_to [topic, bookmark]
+      expect(response).to redirect_to topic
     end
   end
 
@@ -112,5 +112,5 @@ RSpec.describe BookmarksController, type: :controller do
       expect(response).to redirect_to topic
     end
   end
-  
+
 end

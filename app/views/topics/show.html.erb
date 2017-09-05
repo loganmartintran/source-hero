@@ -10,7 +10,7 @@
       <%= link_to "New Bookmark", new_topic_bookmark_path(@topic), class: 'btn btn-success' %>
       <p>
       <% @topic.bookmarks.each do |b| %>
-      <%= link_to b.name, [b.topic, b] %> - <%= link_to b.url, b.url %><br />
+      <strong><%= link_to b.name, b.url %></strong> - <%= link_to "Edit", [b.topic, b] %><br />
       <% end %>
       </p>
     </div>

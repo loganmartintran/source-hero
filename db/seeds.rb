@@ -23,6 +23,7 @@ topics = Topic.all
 100.times do
   Bookmark.create!(
     url: Faker::Internet.url,
+    name: Faker::Company.buzzword,
     topic: topics.sample
   )
 end

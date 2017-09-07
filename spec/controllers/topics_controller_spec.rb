@@ -52,7 +52,7 @@ RSpec.describe TopicsController, type: :controller do
 
   describe "POST #create" do
     it "increases the number of topics by 1" do
-      expect{ post :create, topic: {title: 'title'} }.to change(Topic,:count).by(1)
+      expect{ post :create, topic: {title: 'title', user: user} }.to change(Topic,:count).by(1)
     end
 
     it "assigns Topic.last to @topic" do

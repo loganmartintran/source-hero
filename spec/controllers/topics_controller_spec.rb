@@ -34,6 +34,10 @@ RSpec.describe TopicsController, type: :controller do
   end
 
   describe "GET #new" do
+    before do
+      sign_in user
+    end
+
     it "returns http success" do
       get :new
       expect(response).to have_http_status(:success)
@@ -51,6 +55,10 @@ RSpec.describe TopicsController, type: :controller do
   end
 
   describe "POST #create" do
+    before do
+      sign_in user
+    end
+
     it "increases the number of topics by 1" do
       expect{ post :create, topic: {title: 'title', user: user} }.to change(Topic,:count).by(1)
     end
@@ -67,6 +75,10 @@ RSpec.describe TopicsController, type: :controller do
   end
 
   describe "GET #edit" do
+    before do
+      sign_in user
+    end
+
     it "returns http success" do
       get :edit, {id: topic.id}
       expect(response).to have_http_status(:success)
@@ -87,6 +99,10 @@ RSpec.describe TopicsController, type: :controller do
   end
 
   describe "PUT #update" do
+    before do
+      sign_in user
+    end
+
     it "updates the topic with the correct attribute" do
       new_title = "New Title"
 
@@ -107,6 +123,10 @@ RSpec.describe TopicsController, type: :controller do
   end
 
   describe "DELETE #destroy" do
+    before do
+      sign_in user
+    end
+    
     it "decreases the number of topics by 1" do
       delete :destroy, {id: topic.id}
       count = Topic.where({id: topic.id}).count

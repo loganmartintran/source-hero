@@ -1,4 +1,6 @@
 class BookmarksController < ApplicationController
+  before_action :authenticate_user!, except: [:show]
+
   def show
     @bookmark = Bookmark.find(params[:id])
   end

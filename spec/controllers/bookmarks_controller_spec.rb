@@ -23,6 +23,10 @@ RSpec.describe BookmarksController, type: :controller do
   end
 
   describe "GET #new" do
+    before do
+      sign_in user
+    end
+
     it "returns http success" do
       get :new, topic_id: topic.id
       expect(response).to have_http_status(:success)
@@ -40,6 +44,10 @@ RSpec.describe BookmarksController, type: :controller do
   end
 
   describe "POST #create" do
+    before do
+      sign_in user
+    end
+
     it "assigns a new bookmark to a @bookmark" do
       post :create, topic_id: topic.id, bookmark: {name:'name', url:'url@url.com'}
       expect(assigns(:bookmark)).to eq Bookmark.last
@@ -56,6 +64,10 @@ RSpec.describe BookmarksController, type: :controller do
   end
 
   describe "GET #edit" do
+    before do
+      sign_in user
+    end
+
     it "returns http success" do
       get :edit, topic_id: topic.id, id: bookmark.id
       expect(response).to have_http_status(:success)
@@ -73,6 +85,10 @@ RSpec.describe BookmarksController, type: :controller do
   end
 
   describe "PUT #update" do
+    before do
+      sign_in user
+    end
+
     it "updates the bookmark with expected attributes" do
       new_name = 'new name'
       new_url = 'newurl@url.com'
@@ -99,6 +115,10 @@ RSpec.describe BookmarksController, type: :controller do
   end
 
   describe "DELETE #destroy" do
+    before do
+      sign_in user
+    end
+    
     it "deletes the bookmark" do
       bookmark
       expect {delete :destroy, topic_id: topic.id, id: bookmark.id}.to change{Bookmark.all.count}.by(-1)

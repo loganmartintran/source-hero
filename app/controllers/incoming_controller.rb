@@ -15,6 +15,7 @@ class IncomingController < ApplicationController
      if User.find_by(email: @incoming_sender) != nil
        user = User.find_by(email: @incoming_sender)
        topic = Topic.where(title: @incoming_topic, user: user).first_or_create
+       
        Bookmark.create!(topic: topic, url: incoming_url)
      end
 

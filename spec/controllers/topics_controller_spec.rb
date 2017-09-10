@@ -5,6 +5,10 @@ RSpec.describe TopicsController, type: :controller do
   let(:topic) { user.topics.create!(title:'topic', user: user) }
 
   describe "GET #index" do
+    before do
+      sign_in user
+    end
+
     it "returns http success" do
       get :index
       expect(response).to have_http_status(:success)
@@ -17,6 +21,10 @@ RSpec.describe TopicsController, type: :controller do
   end
 
   describe "GET #show" do
+    before do
+      sign_in user
+    end
+    
     it "returns http success" do
       get :show, {id: topic.id}
       expect(response).to have_http_status(:success)
@@ -126,7 +134,7 @@ RSpec.describe TopicsController, type: :controller do
     before do
       sign_in user
     end
-    
+
     it "decreases the number of topics by 1" do
       delete :destroy, {id: topic.id}
       count = Topic.where({id: topic.id}).count

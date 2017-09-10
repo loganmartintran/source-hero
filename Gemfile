@@ -22,7 +22,7 @@ gem 'turbolinks'
 gem 'figaro'
 gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
 gem 'devise'
-
+gem 'pundit'
 
 group :development, :test do
   gem 'byebug'

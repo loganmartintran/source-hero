@@ -29,12 +29,14 @@ class TopicsController < ApplicationController
 
   def edit
     @topic = Topic.find(params[:id])
+    authorize @topic
   end
 
   def update
     @topic = Topic.find(params[:id])
     @topic.title = params[:topic][:title]
     @topic.user = current_user
+    authorize @topic
 
     if @topic.save
       flash[:notice] = "Your topic was updated sucessfully."
@@ -47,6 +49,7 @@ class TopicsController < ApplicationController
 
   def destroy
     @topic = Topic.find(params[:id])
+    authorize @topic
 
     if @topic.destroy
       flash[:notice] = "#{@topic.title} was successfully deleted."

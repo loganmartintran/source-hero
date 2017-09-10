@@ -28,6 +28,7 @@ class BookmarksController < ApplicationController
   def edit
     @topic = Topic.find(params[:topic_id])
     @bookmark = @topic.bookmarks.find(params[:id])
+    authorize @bookmark
   end
 
   def update
@@ -35,6 +36,7 @@ class BookmarksController < ApplicationController
     @bookmark = @topic.bookmarks.find(params[:id])
     @bookmark.name = params[:bookmark][:name]
     @bookmark.url = params[:bookmark][:url]
+    authorize @bookmark
 
     if @bookmark.save
       flash[:notice] = "Your bookmark was successfully updated."

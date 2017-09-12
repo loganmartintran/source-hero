@@ -1,8 +1,5 @@
 class ApplicationController < ActionController::Base
-  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
-
   include Pundit
-
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -15,11 +12,11 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
 
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
   private
 
-  def user_not_authorized(exception)
-    policy_name = exception.policy.class.to_s.underscore
-
+  def user_not_authorized
     flash[:alert] = "You cannot perform this action."
     redirect_to(request.referrer || root_path)
   end

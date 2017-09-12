@@ -7,14 +7,17 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
+    authorize @topic
   end
 
   def new
     @topic = Topic.new
+    authorize @topic
   end
 
   def create
     @topic = Topic.new
+    authorize @topic
     @topic.title = params[:topic][:title]
     @topic.user = current_user
 
@@ -34,9 +37,9 @@ class TopicsController < ApplicationController
 
   def update
     @topic = Topic.find(params[:id])
+    authorize @topic
     @topic.title = params[:topic][:title]
     @topic.user = current_user
-    authorize @topic
 
     if @topic.save
       flash[:notice] = "Your topic was updated sucessfully."

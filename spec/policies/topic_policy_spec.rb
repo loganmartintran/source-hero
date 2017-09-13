@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 describe TopicPolicy do
-  # subject { described_class.new(user, topic) }
-  #
-  # let(:topic) { Topic.create }
 
   context 'being a visitor' do
     subject { described_class.new(user, topic) }

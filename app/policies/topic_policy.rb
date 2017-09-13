@@ -1,10 +1,17 @@
 class TopicPolicy < ApplicationPolicy
+  attr_reader :user, :topic
+
+  def initialize(user, topic)
+    @user = user
+    @topic = topic
+  end
+
   def index?
     @user
   end
 
   def show?
-    @user && (record.user == @user)
+    @user && (@topic.user == @user)
   end
 
   def create?
@@ -16,15 +23,15 @@ class TopicPolicy < ApplicationPolicy
   end
 
   def update?
-    @user && (record.user == @user)
+    @user && (@topic.user == @user)
   end
 
   def edit?
-    @user && (record.user == @user)
+    @user && (@topic.user == @user)
   end
 
   def destroy?
-    @user && (record.user == @user)
+    @user && (@topic.user == @user)
   end
 
   def scope

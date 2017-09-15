@@ -7,10 +7,8 @@
   </div>
       <h4 class="media-heading">
         <% @topics.each do |topic| %>
-          <% if topic.user == current_user %>
-            <%= link_to topic.title, topic %><br>
-            <% end %>
-          <% end %>
+          <%= link_to topic.title, topic %><br>
+        <% end %>
       </h4>
     </div>
 </div>

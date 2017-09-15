@@ -34,7 +34,9 @@ class TopicPolicy < ApplicationPolicy
     @user && (@topic.user == @user)
   end
 
-  def scope
-    Pundit.policy_scope!(user, record.class)
+  class Scope < Scope
+    def resolve
+      scope.where(user: @user)
+    end
   end
 end

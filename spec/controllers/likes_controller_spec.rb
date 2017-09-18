@@ -9,4 +9,12 @@ RSpec.describe LikesController, type: :controller do
     end
   end
 
+  describe "POST #create" do
+
+  end
+
+  describe "DELETE #destroy" do
+
+  end 
+
 end

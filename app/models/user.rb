@@ -8,11 +8,7 @@ class User < ActiveRecord::Base
   has_many :likes, dependent: :destroy
 
   def liked(bookmark)
-    if likes.where(bookmark_id: bookmark.id).first
-      true
-    else
-      false
-    end
+    likes.where(bookmark_id: bookmark.id).first
   end
 
   def all_likes

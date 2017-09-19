@@ -118,7 +118,7 @@ RSpec.describe BookmarksController, type: :controller do
     before do
       sign_in user
     end
-    
+
     it "deletes the bookmark" do
       bookmark
       expect {delete :destroy, topic_id: topic.id, id: bookmark.id}.to change{Bookmark.all.count}.by(-1)

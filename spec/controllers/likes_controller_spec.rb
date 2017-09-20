@@ -35,8 +35,8 @@ RSpec.describe LikesController, type: :controller do
     end
 
     it "redirects to the bookmark" do
-      delete :destroy, topic_id: topic.id, bookmark_id: bookmark.id, id: like.id
-      expect(response).to redirect_to bookmark
+      delete :destroy, {topic_id: topic.id, bookmark_id: bookmark.id, id: like.id}
+      expect(response).to redirect_to [bookmark.topic, bookmark]
     end
   end
 

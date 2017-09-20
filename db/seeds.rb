@@ -28,6 +28,17 @@ topics = Topic.all
   )
 end
 
+bookmarks = Bookmark.all
+
+#create 50 likes
+50.times do
+  Like.create!(
+    user: users.sample,
+    bookmark: bookmarks.sample
+  )
+end
+
 puts "#{User.count} users created"
 puts "#{Topic.count} topics created"
 puts "#{Bookmark.count} bookmarks created"
+puts "#{Like.count} likes created"

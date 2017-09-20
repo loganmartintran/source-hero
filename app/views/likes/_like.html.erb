@@ -5,9 +5,9 @@
       <i class="glyphicon glyphicon-star-empty"> </i>&nbsp; Unlike
     <% end %>
   <% else %>
-    <%= link_to [bookmark.topic, Like.new], class: 'btn btn-success', method: :post do %>
+    <%= link_to [bookmark, Like.new], class: 'btn btn-success', method: :post do %>
       <i class="glyphicon glyphicon-star"> </i>&nbsp; like
     <% end %>
   <% end %>
 </div>
-<% end %> 
+<% end %>

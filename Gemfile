@@ -23,6 +23,7 @@ gem 'figaro'
 gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
 gem 'devise'
 gem 'pundit'
+gem 'octicons_helper'
 
 group :development, :test do
   gem 'byebug'

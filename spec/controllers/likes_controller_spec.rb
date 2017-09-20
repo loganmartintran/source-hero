@@ -21,7 +21,6 @@ RSpec.describe LikesController, type: :controller do
     it "increases the like count by 1" do
       expect { post :create, topic_id: topic.id, bookmark_id: bookmark.id, like: {user_id: user.id, bookmark_id: bookmark.id }}.to change(Like,:count).by(1)
     end
-
   end
 
   describe "DELETE #destroy" do
@@ -30,7 +29,8 @@ RSpec.describe LikesController, type: :controller do
     end
 
     it "deletes the like" do
-      like
+      like = user.likes.where(bookmark: bookmark.id).create
+      expect(like).not_to be_nil
       expect { delete :destroy, topic_id: topic.id, bookmark_id: bookmark.id, id: like.id}.to change{Like.all.count}.by(-1)
     end
 

@@ -104,6 +104,11 @@ GEM
       mini_portile2 (~> 2.2.0)
     nyan-cat-formatter (0.12.0)
       rspec (>= 2.99, >= 2.14.2, < 4)
+    octicons (4.0.2)
+      nokogiri (>= 1.6.3.1)
+    octicons_helper (4.0.1)
+      octicons (~> 4.0)
+      rails
     orm_adapter (0.5.0)
     pg (0.20.0)
     popper_js (1.11.1)
@@ -237,6 +242,7 @@ DEPENDENCIES
   figaro
   jquery-rails
   nyan-cat-formatter
+  octicons_helper
   pg
   pry-rails
   pundit
@@ -256,4 +262,4 @@ RUBY VERSION
    ruby 2.3.3p222
 
 BUNDLED WITH
-   1.15.4
+   1.16.0.pre.2

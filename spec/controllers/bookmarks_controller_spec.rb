@@ -6,6 +6,10 @@ RSpec.describe BookmarksController, type: :controller do
   let(:bookmark) { topic.bookmarks.create!(url:'bookmark@url.com', name:'bookmark') }
 
   describe "GET #show" do
+    before do
+      sign_in user
+    end
+    
     it "returns http success" do
       get :show, topic_id: topic.id, id: bookmark.id
       expect(response).to have_http_status(:success)

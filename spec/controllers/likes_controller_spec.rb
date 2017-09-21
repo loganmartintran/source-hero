@@ -6,12 +6,12 @@ RSpec.describe LikesController, type: :controller do
   let(:bookmark) { topic.bookmarks.create!(url:'url@url.com') }
   let(:like) { Like.create!(user: user, bookmark: bookmark) }
 
-  describe "GET #index" do
-    it "returns http success" do
-      get :index
-      expect(response).to have_http_status(:success)
-    end
-  end
+  # describe "GET #index" do
+  #   it "returns http success" do
+  #     get :index
+  #     expect(response).to have_http_status(:success)
+  #   end
+  # end
 
   describe "POST #create" do
     before do

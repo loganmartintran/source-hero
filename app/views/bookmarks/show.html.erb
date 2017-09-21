@@ -1,6 +1,6 @@
 <div class="text-center">
   <h1><%= @bookmark.name %></h1>
   <%= render partial: 'likes/like', locals: { bookmark: @bookmark } %>
-  <%= link_to "Edit bookmark", edit_topic_bookmark_path, class: 'btn btn-success' %>
-  <%= link_to "Delete bookmark", [@bookmark.topic, @bookmark], method: :delete, class: 'btn btn-danger', data: {confirm: "Are you sure you want to delete this bookmark?"} %>
+  <%= button_to "Edit bookmark", edit_topic_bookmark_path, class: 'btn btn-success' %>
+  <%= button_to "Delete bookmark", [@bookmark.topic, @bookmark], method: :delete, class: 'btn btn-danger', data: {confirm: "Are you sure you want to delete this bookmark?"} %>
 </div>

@@ -23,7 +23,7 @@ class BookmarksController < ApplicationController
 
     if @bookmark.save
       flash[:notice] = "Your bookmark was successfully saved."
-      redirect_to :back
+      redirect_to @bookmark.topic
     else
       flash[:alert] = "There was an error saving your bookmark. Please try again."
       render :new

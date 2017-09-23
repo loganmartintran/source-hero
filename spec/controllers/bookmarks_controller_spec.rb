@@ -5,27 +5,6 @@ RSpec.describe BookmarksController, type: :controller do
   let(:topic) { user.topics.create!(title:'title') }
   let(:bookmark) { topic.bookmarks.create!(url:'bookmark@url.com', name:'bookmark') }
 
-  describe "GET #show" do
-    before do
-      sign_in user
-    end
-    
-    it "returns http success" do
-      get :show, topic_id: topic.id, id: bookmark.id
-      expect(response).to have_http_status(:success)
-    end
-
-    it "renders the #show view" do
-      get :show, topic_id: topic.id, id: bookmark.id
-      expect(response).to render_template :show
-    end
-
-    it "assigns bookmark to @bookmark" do
-      get :show, topic_id: topic.id, id: bookmark.id
-      expect(assigns(:bookmark)).to eq bookmark
-    end
-  end
-
   describe "GET #new" do
     before do
       sign_in user
@@ -61,9 +40,9 @@ RSpec.describe BookmarksController, type: :controller do
       expect { post :create, topic_id: topic.id, bookmark: {name:'name', url:'url@url.com'}}.to change(Bookmark,:count).by(1)
     end
 
-    it "redirects to the new bookmark" do
+    it "redirects to the topic #index" do
       post :create, topic_id: topic.id, bookmark: {name:'name', url:'url@url.com'}
-      expect(response).to redirect_to [topic, Bookmark.last]
+      expect(response).to redirect_to topic
     end
   end
 

@@ -11,7 +11,7 @@ class TopicPolicy < ApplicationPolicy
   end
 
   def show?
-    @user && (@topic.user == @user)
+    @user
   end
 
   def create?

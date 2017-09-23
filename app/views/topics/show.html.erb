@@ -1,17 +1,25 @@
 <div class="text-center">
   <div class="col-md-16">
     <h1><%= @topic.title %></h1>
-      <small>
-      <%= link_to "Edit Topic", edit_topic_path %> -
-      <%= link_to "Delete Topic", @topic, method: :delete, data: { confirm: "Are you sure you want to delete this topic?" } %>
-      </small>
+      <% if @topic.user == current_user %>
+        <small>
+        <%= link_to "Edit Topic", edit_topic_path %>
+        </small>
+      <% end %>
     </div>
     <div>
-      <%= link_to "New Bookmark", new_topic_bookmark_path(@topic), class: 'btn btn-success' %>
-      <p>
+      <%= link_to "New Bookmark", new_topic_bookmark_path(@topic), class: 'btn btn-success' %><br />
       <% @topic.bookmarks.each do |b| %>
-      <strong><%= link_to b.name, "http://#{b.url}" %></strong> - <%= link_to "Edit", [b.topic, b] %><br />
+      <div class="media-body">
+        <div class="row justify-content-md-center" id="bookmark-list">
+          <strong><%= link_to b.name, "http://#{b.url}" %></strong>
+          <%= render partial: 'likes/like', locals: { bookmark: b } %>
+          <% if b.user == current_user %>
+          <small><%= link_to "Edit", edit_topic_bookmark_path(topic_id: b.topic, id: b.id), class: 'btn btn-secondary btn-sm' %><br /></small>
+          <% end %>
+        </div>
+      </div>
       <% end %>
-      </p>
     </div>
+  </div>
 </div>

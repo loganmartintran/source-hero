@@ -1,0 +1,22 @@
+<div class="text-center">
+  <h1>My Resources</h1>
+  <div>
+    <% @user_bookmarks.each do |b| %>
+    <div>
+      <strong><%= link_to b.name, "http://#{b.url}" %></strong>
+      <small><%= render partial: 'likes/like', locals: { bookmark: b } %></small>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="text-center">
+  <h1>My Likes</h1>
+  <div>
+    <% @user_likes.each do |l| %>
+      <div>
+        <strong><%= link_to l.bookmark.name, "http://#{l.bookmark.url}" %></strong>
+      </div>
+    <% end %>
+  </div>
+</div>

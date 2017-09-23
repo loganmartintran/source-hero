@@ -11,7 +11,7 @@ class BookmarkPolicy < ApplicationPolicy
   end
 
   def show?
-    @user && (@bookmark.user == @user)
+    @user 
   end
 
   def create?

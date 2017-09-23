@@ -13,15 +13,17 @@ class BookmarksController < ApplicationController
   end
 
   def create
+    @user = current_user
     @topic = Topic.find(params[:topic_id])
     @bookmark = @topic.bookmarks.new
-    authorize @bookmark
+    @bookmark.user = @user
+    @bookmark.topic = @topic
     @bookmark.name = params[:bookmark][:name]
     @bookmark.url = params[:bookmark][:url]
 
     if @bookmark.save
       flash[:notice] = "Your bookmark was successfully saved."
-      redirect_to [@bookmark.topic, @bookmark]
+      redirect_to @bookmark.topic
     else
       flash[:alert] = "There was an error saving your bookmark. Please try again."
       render :new

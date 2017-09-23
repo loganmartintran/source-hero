@@ -9,11 +9,11 @@ class LikesController < ApplicationController
     authorize @like
 
     if @like.save
-      flash[:notice] = "Bookmark liked!"
-      redirect_to @bookmark.topic
+      flash[:notice] = "#{@bookmark.url} liked!"
+      redirect_to :back
     else
       flash[:alert] = "There was an error liking the bookmark. Please try again."
-      redirect_to @bookmark.topic
+      redirect_to :back
     end
   end
 
@@ -24,10 +24,10 @@ class LikesController < ApplicationController
 
     if @like.destroy
       flash[:notice] = "You have unliked #{@bookmark.url}."
-      redirect_to [@bookmark.topic]
+      redirect_to :back
     else
       flash[:alert] = "There was an error unliking #{@bookmark.url}. Please try again."
-      redirect_to [@bookmark.topic]
+      redirect_to :back
     end
   end
 end

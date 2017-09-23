@@ -1,22 +1,24 @@
-<div class="text-center">
-  <h1>My Resources</h1>
-  <div>
+<div class="container">
+  <div class="text-center">
+    <h1>My Resources</h1>
     <% @user_bookmarks.each do |b| %>
-    <div>
-      <strong><%= link_to b.name, "http://#{b.url}" %></strong>
-      <small><%= render partial: 'likes/like', locals: { bookmark: b } %></small>
-    </div>
-    <% end %>
-  </div>
-</div>
-
-<div class="text-center">
-  <h1>My Likes</h1>
-  <div>
-    <% @user_likes.each do |l| %>
-      <div>
-        <strong><%= link_to l.bookmark.name, "http://#{l.bookmark.url}" %></strong>
+      <div class="row justify-content-md-center" id="bookmark-list">
+        <strong><%= link_to b.name, "http://#{b.url}" %></strong>
+        <small><%= render partial: 'likes/like', locals: { bookmark: b } %></small>
+        <%= link_to "Edit", edit_topic_bookmark_path(topic_id: b.topic, id: b.id), class: 'btn btn-secondary btn-sm' %>
       </div>
     <% end %>
+  </div>
+
+  <div class="text-center">
+    <h1>Likes</h1>
+    <div>
+      <% @user_likes.each do |l| %>
+        <div class="row justify-content-md-center" id="bookmark-list">
+          <strong><%= link_to l.bookmark.name, "http://#{l.bookmark.url}" %></strong>
+          <small><%= render partial: 'likes/like', locals: { bookmark: l.bookmark } %></small>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

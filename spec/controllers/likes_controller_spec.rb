@@ -9,6 +9,7 @@ RSpec.describe LikesController, type: :controller do
   describe "POST #create" do
     before do
       sign_in user
+      request.env["HTTP_REFERER"] = "http://expertsexchange.com" #required for request back to not error for test on line 15
     end
 
     it "increases the like count by 1" do
@@ -19,6 +20,7 @@ RSpec.describe LikesController, type: :controller do
   describe "DELETE #destroy" do
     before do
       sign_in user
+      request.env["HTTP_REFERER"] = "http://test.host/topics/1/bookmarks/1"
     end
 
     it "deletes the like" do

@@ -17,13 +17,13 @@
 
 - *Factory Girl* - Development
 - *Bootstrap* - Styling
-- *Bcrypt* - data encryption
-- *Figaro* - environmental variables
+- *Bcrypt* - Data Encryption
+- *Figaro* - Environmental Variables
 - *Rspec* - TDD
 - *Devise* - Authentication
 - *Pundit* - Authorization
-- *Faker* - Seed data
-- *Pundit-matchers* - Pundit specs
+- *Faker* - Seed Data
+- *Pundit-matchers* - Pundit Specs
 
 **Set-up:**
 
